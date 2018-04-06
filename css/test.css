@@ -1,35 +1,15 @@
 body {
-    height: 100%;
-    margin: 0;
-    overflow: hidden;
     font-family: 'Roboto', sans-serif;
     background-color: black;
 }
 
-.bgimg-1 {
-    background-image: url("../Images/bw.png");
-    z-index: -1;
-    position: absolute;
-    top: 400;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 110%;
-    height: 110%;
-    background-size: cover;
-    background-color: black;
-    background-repeat: no-repeat;
-}
-
 .background-color {
-    display: table-cell;
-    vertical-align: middle;
     line-height: 0%;
+    margin: 50px;
+    margin-top: -60px;
     color: #E5E5E5;
     text-transform: uppercase;
     text-align: left;
-    padding-left: 50px;
-    padding-top: 50px;
     letter-spacing: .10em;
     line-height: 100%;
     word-spacing: 30px;
@@ -47,7 +27,6 @@ body {
 }
 
 .elegant-shadow2 {
-    line-height: 130px;
     font-size: 5.4em;
 }
 
