@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Page Title</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" media="screen" href="css/Competences.css" />
+
+	<script src="js/script_competences.js"></script>
+	<script src="js/Chart.PieceLabel.min.js"></script>
+	<script src="js/Chart.PieceLabel.js"></script>
+	<script src="utils.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+</head>
+
+
+
+<body>
+
+	<header class="header">
+		<a href="Acceuil.html" class="logo">Accueil</a>
+		<input class="menu-btn" type="checkbox" id="menu-btn" />
+		<label class="menu-icon" for="menu-btn">
+			<span class="navicon"></span>
+		</label>
+		<ul class="menu">
+			<li>
+				<a href="Competences.html">Compétences</a>
+			</li>
+			<li>
+				<a href="#about">CV</a>
+			</li>
+			<li>
+				<a href="#careers">Mentions Légales</a>
+			</li>
+			<li>
+				<a href="#contact">Contact</a>
+			</li>
+		</ul>
+	</header>
+
+	<div id="canvas-holder" style="width: 17%;">
+		<canvas id="chart-area1" width="300" height="300"></canvas>
+		<div id="chartjs-tooltip">
+			<table></table>
+		</div>
+		<canvas id="chart-area2" width="300" height="300"></canvas>
+		<div id="chartjs-tooltip">
+			<table></table>
+		</div>
+		<canvas id="chart-area3" width="300" height="300"></canvas>
+		<div id="chartjs-tooltip">
+			<table></table>
+		</div>
+		<canvas id="chart-area4" width="300" height="300"></canvas>
+		<div id="chartjs-tooltip">
+			<table></table>
+		</div>
+		<canvas id="chart-area5" width="300" height="300"></canvas>
+		<div id="chartjs-tooltip">
+			<table></table>
+		</div>
+	</div>
+
+	<script>
+		Chart.defaults.global.tooltips.custom = function (tooltip) {
+			// Tooltip Element
+			var tooltipEl = document.getElementById('chartjs-tooltip');
+
+			// Hide if no tooltip
+			if (tooltip.opacity === 0) {
+				tooltipEl.style.opacity = 0;
+				return;
+			}
+
+			// Set caret Position
+			tooltipEl.classList.remove('above', 'below', 'no-transform');
+			if (tooltip.yAlign) {
+				tooltipEl.classList.add(tooltip.yAlign);
+			} else {
+				tooltipEl.classList.add('no-transform');
+			}
+
+			function getBody(bodyItem) {
+				return bodyItem.lines;
+			}
+
+			// Set Text
+			if (tooltip.body) {
+				var titleLines = tooltip.title || [];
+				var bodyLines = tooltip.body.map(getBody);
+
+				var innerHtml = '<thead>';
+
+				titleLines.forEach(function (title) {
+					innerHtml += '<tr><th>' + title + '</th></tr>';
+				});
+				innerHtml += '</thead><tbody>';
+
+				bodyLines.forEach(function (body, i) {
+					var colors = tooltip.labelColors[i];
+					var style = 'background:' + colors.backgroundColor;
+					style += '; border-color:' + colors.borderColor;
+					style += '; border-width: 2px';
+					var span = '<span class="chartjs-tooltip-key" style="' + style + '"></span>';
+					innerHtml += '<tr><td>' + span + body + '</td></tr>';
+				});
+				innerHtml += '</tbody>';
+
+				var tableRoot = tooltipEl.querySelector('table');
+				tableRoot.innerHTML = innerHtml;
+			}
+
+			var positionY = this._chart.canvas.offsetTop;
+			var positionX = this._chart.canvas.offsetLeft;
+
+			// Display, position, and set styles for font
+			tooltipEl.style.opacity = 1;
+			tooltipEl.style.left = positionX + tooltip.caretX + 'px';
+			tooltipEl.style.top = positionY + tooltip.caretY + 'px';
+			tooltipEl.style.fontFamily = tooltip._bodyFontFamily;
+			tooltipEl.style.fontSize = tooltip.bodyFontSize;
+			tooltipEl.style.fontStyle = tooltip._bodyFontStyle;
+			tooltipEl.style.padding = tooltip.yPadding + 'px ' + tooltip.xPadding + 'px';
+		};
+
+		var config = {
+			type: 'pie',
+			data: {
+				datasets: [{
+					data: [45, 40, 5],
+					backgroundColor: [
+						window.chartColors.red,
+						window.chartColors.orange,
+						window.chartColors.yellow,
+					],
+				}],
+				labels: [
+					'Python',
+					'Java',
+					'SQL',
+				]
+			},
+			options: {
+				cutoutPercentage: 50,
+				responsive: true,
+				legend: {
+					display: false
+				},
+				pieceLabel: {
+					render: 'value',
+					fontSize: 14,
+					fontStyle: 'bold',
+					fontColor: '#000',
+					fontFamily: '"Lucida Console", Monaco, monospace'
+				},
+				tooltips: {
+					enabled: false,
+				}
+			}
+		};
+
+
+		function createChart(id, type, options) {
+			var data = {
+				labels: ['January', 'February', 'March'],
+				datasets: [
+					{
+						label: 'My First dataset',
+						data: [50445, 33655, 15900],
+						backgroundColor: [
+							'#FF6384',
+							'#36A2EB',
+							'#FFCE56'
+						]
+					}
+				]
+			};
+
+			new Chart(document.getElementById(id), {
+				type: type,
+				data: data,
+				options: options
+			});
+		}
+
+
+
+		window.onload = function () {
+			var ctx = document.getElementById('chart-area1').getContext('2d');
+			window.myPie = new Chart(ctx, config);
+			console.log(config);
+
+			/*
+				var ctx = document.getElementById('chart-area2').getContext('2d');
+				window.myPie = new Chart(ctx, config);
+				var ctx = document.getElementById('chart-area3').getContext('2d');
+				window.myPie = new Chart(ctx, config);
+				var ctx = document.getElementById('chart-area4').getContext('2d');
+				window.myPie = new Chart(ctx, config);
+				var ctx = document.getElementById('chart-area5').getContext('2d');
+				window.myPie = new Chart(ctx, config); */
+		};
+
+
+
+	</script>
+</body>
+
+</html>

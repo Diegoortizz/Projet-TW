@@ -131,7 +131,7 @@
 }
 
 .menu-open:checked+.menu-open-button {
-    -webkit-transition-timing-function: linear;
+    -webkit-transition-timing-funct: linear;
     transition-timing-function: linear;
     -webkit-transition-duration: 200ms;
     transition-duration: 200ms;
