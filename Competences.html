@@ -67,56 +67,217 @@
 	</div>
 
 	<script>
-		var config = {
-			type: 'pie',
-			data: {
-				datasets: [{
-					data: [45, 40, 5],
-					backgroundColor: [
-						'#253E84',
-						'#182856',
-						'#0C152D'
-					],
-				}],
-				labels: [
-					'Python',
-					'Java',
-					'SQL',
-				]
+
+		var options1 = {
+			cutoutPercentage: 45,
+			responsive: true,
+			legend: {
+				display: false
 			},
-			options: {
-				cutoutPercentage: 50,
-				responsive: true,
-				legend: {
-					display: false
-				},
-				pieceLabel: {
-					render: 'label',
-					fontSize: 14,
-					fontStyle: 'bold',
-					fontColor: '#FFF',
-					position: 'border'
-				},
+			pieceLabel: {
+				render: 'label',
+				fontSize: 15,
+				fontStyle: 'bold',
+				fontColor: '#000',
+				position: 'border',
+				arc: false
+			},
+			tooltips: {
+				enabled: true,
+			},
+			title: {
+				display: true,
+				position:'top',
+				text: 'Programmation',
+				fontColor: '#FFF'
+				
+			}
+		}
+		var options2 = {
+			cutoutPercentage: 45,
+			responsive: true,
+			legend: {
+				display: false
+			},
+			pieceLabel: {
+				render: 'label',
+				fontSize: 12,
+				fontStyle: 'bold',
+				fontColor: '#000',
+				position: 'border',
+				arc: false
+			},
+			tooltips: {
+				enabled: true,
+			},
+			title: {
+				display: true,
+				position:'bottom',
+				fontColor: '#FFF',
+				text: 'Programmation Web'
+			}
+		}
+		var options3 = {
+			cutoutPercentage: 45,
+			responsive: true,
+			legend: {
+				display: false
+			},
+			pieceLabel: {
+				render: 'label',
+				fontSize: 15,
+				fontStyle: 'bold',
+				fontColor: '#000',
+				position: 'border',
+				arc: false
+			},
+			tooltips: {
+				enabled: true,
+			},
+			title: {
+				display: true,
+				text: 'Outils',
+				fontColor: '#FFF',
+			}
+		}
+		var options4 = {
+			cutoutPercentage: 45,
+			responsive: true,
+			legend: {
+				display: false
+			},
+			pieceLabel: {
+				render: 'label',
+				fontSize: 15,
+				fontStyle: 'bold',
+				fontColor: '#000',
+				position: 'border',
+				arc: false
+			},
+			tooltips: {
+				enabled: true,
+			},
+			title: {
+				display: true,
+				text: 'Langues',
+				fontColor: '#FFF',
+				position:"bottom"
 
 			}
+		}
+		var options5 = {
+			cutoutPercentage: 45,
+			responsive: true,
+			legend: {
+				display: false
+			},
+			pieceLabel: {
+				render: 'label',
+				fontSize: 15,
+				fontStyle: 'bold',
+				fontColor: '#000',
+				position: 'border',
+				arc: false
+			},
+			tooltips: {
+				enabled: true,
+			},
+			title: {
+				display: true,
+				text: 'Sports',
+				fontColor: '#FFF',
+
+			}
+		}
+
+
+		var data1 = {
+			datasets: [{
+				data: [45, 40, 10],
+				backgroundColor: [
+					'#FCA311',
+					'#FCAB26',
+					'#FCB239'
+				],
+			}],
+			labels: [
+				'Python',
+				'Java',
+				'SQL',
+			]
+		};
+
+		var data2 = {
+			datasets: [{
+				data: [60, 20, 10, 10],
+				backgroundColor: [
+					'#FCA311',
+					'#FCAB26',
+					'#FCB239',
+					'#FCB239'
+				],
+			}],
+			labels: [
+				'Html/Css',
+				'JavaScript',
+				'Jquery',
+				'Bootstrap'
+			]
+		};
+
+		var data3 = {
+			datasets: [{
+				data: [40, 30, 20, 10],
+				backgroundColor: [
+					'#E69510',
+					'#FCA311',
+					'#FCAB26',
+					'#FCB239'
+				],
+			}],
+			labels: [
+				'PyCharm',
+				'Eclipse',
+				'Git',
+				'VisualSC'
+			]
+		};
+
+		var data4 = {
+			datasets: [{
+				data: [20, 80],
+				backgroundColor: [
+					'#FCA311',
+					'#FCB239'
+				],
+			}],
+			labels: [
+				'Allemand',
+				'Anglais'
+			]
+		};
+
+		var data5 = {
+			datasets: [{
+				data: [50, 20, 10, 20],
+				backgroundColor: [
+					'#E69510',
+					'#FCA311',
+					'#FCB239',
+					'#FCB239'
+				],
+			}],
+			labels: [
+				'Judo',
+				'Natation',
+				'Tennis',
+				'Fitness'
+			]
 		};
 
 
-		function createChart(id, type, options) {
-			var data = {
-				labels: ['January', 'February', 'March'],
-				datasets: [
-					{
-						label: 'My First dataset',
-						data: [50445, 33655, 15900],
-						backgroundColor: [
-							'#FF6384',
-							'#36A2EB',
-							'#FFCE56'
-						]
-					}
-				]
-			};
+
+		function createChart(id, type, options, data) {
 
 			new Chart(document.getElementById(id), {
 				type: type,
@@ -125,20 +286,16 @@
 			});
 		}
 
-		Chart.defaults.global.animation.easing = 'easeOutBack';
-		Chart.defaults.global.elements.arc.borderWidth = 0;
+		Chart.defaults.global.animation.easing = 'easeInBounce';
+		Chart.defaults.global.elements.arc.borderWidth = 1;
+		Chart.defaults.global.animation.duration = 3000;
 
 		window.onload = function () {
-			var ctx = document.getElementById('chart-area1').getContext('2d');
-			window.myPie = new Chart(ctx, config);
-			var ctx = document.getElementById('chart-area2').getContext('2d');
-			window.myPie = new Chart(ctx, config);
-			var ctx = document.getElementById('chart-area3').getContext('2d');
-			window.myPie = new Chart(ctx, config);
-			var ctx = document.getElementById('chart-area4').getContext('2d');
-			window.myPie = new Chart(ctx, config);
-			var ctx = document.getElementById('chart-area5').getContext('2d');
-			window.myPie = new Chart(ctx, config);
+			window.myPie = createChart('chart-area1', 'pie', options1, data1);
+			window.myPie = createChart('chart-area2', 'pie', options2, data2);
+			window.myPie = createChart('chart-area3', 'pie', options3, data3);
+			window.myPie = createChart('chart-area4', 'pie', options4, data4);
+			window.myPie = createChart('chart-area5', 'pie', options5, data5);
 		};
 
 
