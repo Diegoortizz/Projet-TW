@@ -1,72 +1,48 @@
 body, html {
     height: 100%;
-    background: linear-gradient(black, rgb(50, 50, 50));
-    overflow: hidden;
     margin: 0;
+    background: rgb(15, 15, 15);
     font-family: 'Roboto Condensed', sans-serif;
+  }
+  
+
+p {
+    color: #E5E5E5;
+    text-align: justify;
 }
 
 a {
     color: #FCA311;
 }
 
-#canvas-holder {
-    margin-left: 6%;
-    margin-top: 2%;
-    height: 100%;
-    display: grid;
-    grid-gap: 10px;
+
+.text{
+    padding-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;    
+    padding-bottom: 50px;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    padding: 50px;
 }
 
-#chart-area1 {
-    grid-column: col 1;
-    grid-row: row 1;
-}
 
-#chart-area2 {
-    grid-column: col 2;
-    grid-row: row 2;
-}
-
-#chart-area3 {
-    grid-column: col 3;
-    grid-row: row 1;
-}
-
-#chart-area4 {
-    grid-column: col 4;
-    grid-row: row 2;
-}
-
-#chart-area5 {
-    grid-column: col 5;
-    grid-row: row 1;
-}
-
-#chartjs-tooltip {
-    opacity: 1;
-    position: absolute;
-    background: rgba(0, 0, 0, .7);
-    color: white;
-    border-radius: 3px;
-    -webkit-transition: all .1s ease;
-    transition: all .1s ease;
-    pointer-events: none;
-    -webkit-transform: translate(-50%, 0);
-    transform: translate(-50%, 0);
-}
-
-.chartjs-tooltip-key {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    margin-right: 10px;
-}
-
-a {
+h1, h2 {
+    text-align: left;
     color: #FCA311;
+    font-weight: bold;
+    text-decoration: underline;
+    padding-top: 75px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
 }
-
+h1{
+    padding-top: 40px;
+    text-align: center;
+    font-size: 3em;
+}
+/* header */
 
 .header {
     background-color: rgb(15, 15, 15,0.8);
@@ -100,11 +76,10 @@ a {
     color: black;
 }
 
-.header li:nth-child(1) a{
+.header li:nth-child(3) a{
     background-color: #FCA311; 
     color:black;
-}
-
+  }
 
 .header .logo {
     display: block;
@@ -114,6 +89,7 @@ a {
     text-decoration: none;
 }
 
+/* menu */
 
 .header .menu {
     clear: both;
@@ -121,6 +97,7 @@ a {
     transition: max-height .2s ease-out;
 }
 
+/* menu icon */
 
 .header .menu-icon {
     cursor: pointer;
@@ -158,6 +135,7 @@ a {
     top: -5px;
 }
 
+/* menu btn */
 
 .header .menu-btn {
     display: none;
@@ -182,7 +160,6 @@ a {
 .header .menu-btn:checked~.menu-icon:not(.steps) .navicon:before, .header .menu-btn:checked~.menu-icon:not(.steps) .navicon:after {
     top: 0;
 }
-
 
 @media (min-width: 400px) {
     .header li {
