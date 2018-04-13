@@ -169,7 +169,7 @@ input {
 }
 
 
-@media (min-width: 400px) {
+@media (min-width: 480px) {
     .header li {
         float: left;
     }
